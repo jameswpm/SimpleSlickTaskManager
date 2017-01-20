@@ -32,7 +32,7 @@ class CreateDatabaseSpec extends FunSpec with Matchers {
           Task(title = "Build a simple application using Slick", dueBy = LocalDateTime.now().plusDays(3))
         )
         Await.result(db.run(DataModel.insertTaskAction(tasks: _*)), 2 seconds)
-        val result = Await.result(db.run(DataModel.listTasksAction), 2 seconds)
+        val result = Await.result(db.run(DataModel.listAllTasksAction), 2 seconds)
         result should have length 4// one is for the previous test that runs at same time
       }
     }
